@@ -46,7 +46,10 @@ public class LevelManager : MonoBehaviour
     }
     public void NextLevel()
     {
-        nextLevelUI.SetActive(false);           
+        nextLevelUI.SetActive(false);
+        GameManager.instance.enemies.Clear();
+        GameManager.instance.bombs.Clear();
+        PlayerController.instance.bombCount = -1;
         Level currentLevel = GetCurrentLevel();
         PlayerPrefs.SetInt(CommonTypes.LEVEL_DATA_KEY, currentLevel.Id + 1);
         InitializeLevel();
@@ -55,6 +58,9 @@ public class LevelManager : MonoBehaviour
     public void RestartLevel()
     {
         CanvasManager.instance.failLevelUI.SetActive(false);
+        GameManager.instance.enemies.Clear();
+        GameManager.instance.bombs.Clear();
+        PlayerController.instance.bombCount = -1;
         InitializeLevel();     
     }
     public Level GetCurrentLevel()

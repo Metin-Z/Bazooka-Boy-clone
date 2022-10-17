@@ -31,7 +31,7 @@ public class EnemyDisplay : MonoBehaviour
             item.AddExplosionForce(power, explosionPos, radius, upForce);
 
         dead = true;
-
+        GameManager.instance.enemies.Remove(gameObject);
         GameManager.instance.LevelCheck();
     }
 }

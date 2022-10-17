@@ -27,7 +27,11 @@ public class GameManager : MonoBehaviour
         {
             CanvasManager.instance.nextLevelUI.SetActive(true);
         }
-        if (player == null || PlayerController.instance.bombCount == 2 && enemies.Count > 0 && bombs.Count == 0)
+        if (player != null && PlayerController.instance.bombCount == 2 && enemies.Count > 0 && bombs.Count == 0)
+        {
+            CanvasManager.instance.failLevelUI.SetActive(true);
+        }
+        if (player == null)
         {
             CanvasManager.instance.failLevelUI.SetActive(true);
         }
